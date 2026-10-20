@@ -1,0 +1,476 @@
+/* login-page-06 - Colorlib
+ * Every style this snippet uses, and nothing else. No framework, no build step.
+ */
+
+/* Keeps a host page's framework base styles (Bootstrap's reboot) off this
+   snippet: every element starts from the browser default, then this sheet
+   styles it. On its own page it changes nothing. */
+:where(html) :is(html,body,div,span,p,a,h1,h2,h3,h4,h5,h6,label,input,select,option,optgroup,textarea,button,form,fieldset,legend,ul,ol,li,dl,dt,dd,figure,figcaption,section,article,header,footer,nav,main,aside,strong,b,em,i,small,sub,sup,blockquote,pre,code,picture,progress,output,summary,details,address,abbr,mark), :is(html, body) {
+  all: revert;
+}
+:where(html) input::-webkit-datetime-edit,
+:where(html) input::-webkit-datetime-edit-fields-wrapper,
+:where(html) input::-webkit-datetime-edit-text,
+:where(html) input::-webkit-datetime-edit-month-field,
+:where(html) input::-webkit-datetime-edit-day-field,
+:where(html) input::-webkit-datetime-edit-year-field {
+  all: revert;
+}
+/* Chrome maps the hidden attribute to display:none below author styles, so the
+   revert above would show every hidden element. Put it back at the weight of
+   one class: the snippet's own class rules can still override it, as they
+   could the browser default. */
+:where(html) [hidden]:where(:not([hidden="until-found" i])) {
+  display: none;
+}
+:where(html) :is(img, svg) {
+  vertical-align: revert;
+}
+:where(html) :is(img, table, thead, tbody, tfoot, tr, th, td, caption, hr, iframe, video) {
+  box-sizing: revert;
+}
+:where(html) img {
+  border-style: revert;
+}
+:where(html) table {
+  border-collapse: revert;
+  caption-side: revert;
+}
+:where(html) caption {
+  padding-top: revert;
+  padding-bottom: revert;
+  color: revert;
+  text-align: revert;
+}
+:where(html) th {
+  text-align: revert;
+}
+:where(html) :is(thead, tbody, tfoot, tr, td, th) {
+  border-color: revert;
+  border-style: revert;
+  border-width: revert;
+}
+:where(html) hr {
+  margin: revert;
+  color: revert;
+  background-color: revert;
+  border: revert;
+  opacity: revert;
+  height: revert;
+  overflow: revert;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/space-grotesk-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/space-grotesk-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../fonts/space-grotesk-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../fonts/space-grotesk-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/space-grotesk-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/space-grotesk-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../fonts/space-grotesk-700-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../fonts/space-grotesk-700-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.cl-icon {
+  height: 1em;
+  width: auto;
+  fill: currentColor;
+  display: inline-block;
+}
+
+body {
+  margin: 0;
+  background: #f4efe6;
+  font-family: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.cl-login06-demo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  place-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 40px 16px;
+  background: radial-gradient(circle at 12% 18%, rgba(182, 240, 156, .55), transparent 28%),
+    radial-gradient(circle at 88% 82%, rgba(255, 209, 102, .45), transparent 30%),
+    #f4efe6;
+}
+
+.cl-login06 {
+  --cl-login06-ink: #10241d;
+  --cl-login06-muted: #4d5f58;
+  --cl-login06-deep: #123b2f;
+  --cl-login06-lime: #b6f09c;
+  --cl-login06-line: #d8d2c4;
+  --cl-login06-error: #b42318;
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+  padding: 28px clamp(20px, 6vw, 44px) 28px;
+  border: 2px solid var(--cl-login06-deep);
+  border-radius: 28px;
+  background: #fffdf8;
+  box-shadow: 8px 8px 0 var(--cl-login06-deep);
+  color: var(--cl-login06-ink);
+  line-height: 1.5;
+  text-align: center;
+}
+
+.cl-login06 *,
+.cl-login06 *::before,
+.cl-login06 *::after {
+  box-sizing: border-box;
+}
+
+.cl-login06 [hidden] {
+  display: none !important;
+}
+
+.cl-login06__vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cl-login06__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cl-login06__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.cl-login06__secure {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e9f7df;
+  color: var(--cl-login06-deep);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cl-login06__art {
+  margin: 18px 0 6px;
+}
+
+.cl-login06__art svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.cl-login06__title {
+  margin: 0 0 8px;
+  font-size: clamp(24px, 4vw, 30px);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.15;
+}
+
+.cl-login06__sub {
+  margin: 0 0 26px;
+  color: var(--cl-login06-muted);
+  font-size: 15px;
+}
+
+.cl-login06__sub strong {
+  color: var(--cl-login06-ink);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cl-login06__fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.cl-login06__boxes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.6vw, 10px);
+}
+
+.cl-login06__digit {
+  flex: 0 1 56px;
+  width: 56px;
+  min-width: 0;
+  height: 66px;
+  padding: 0;
+  border: 2px solid var(--cl-login06-line);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--cl-login06-ink);
+  font: inherit;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  caret-color: var(--cl-login06-deep);
+  transition: border-color .12s ease, box-shadow .12s ease, transform .12s ease;
+}
+
+.cl-login06__digit:hover {
+  border-color: #a9a291;
+}
+
+.cl-login06__digit:focus {
+  outline: none;
+  border-color: var(--cl-login06-deep);
+  box-shadow: 0 0 0 4px rgba(182, 240, 156, .9);
+  transform: translateY(-2px);
+}
+
+.cl-login06__digit.is-filled {
+  border-color: var(--cl-login06-deep);
+  background: #f3fbee;
+}
+
+.cl-login06__dash {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 3px;
+  border-radius: 2px;
+  background: #b3ab98;
+}
+
+.cl-login06__form.is-error .cl-login06__digit {
+  border-color: var(--cl-login06-error);
+  background: #fff6f5;
+}
+
+.cl-login06__form.is-shake .cl-login06__boxes {
+  animation: cl-login06-shake .35s ease;
+}
+
+@keyframes cl-login06-shake {
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+.cl-login06__error {
+  min-height: 22px;
+  margin: 10px 0 6px;
+  color: var(--cl-login06-error);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cl-login06__submit {
+  width: 100%;
+  min-height: 54px;
+  border: 2px solid var(--cl-login06-deep);
+  border-radius: 16px;
+  background: var(--cl-login06-deep);
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease;
+}
+
+.cl-login06__submit:hover {
+  background: var(--cl-login06-lime);
+  color: var(--cl-login06-deep);
+}
+
+.cl-login06__submit[aria-disabled="true"] {
+  cursor: progress;
+  opacity: .8;
+}
+
+.cl-login06__resend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 8px;
+  margin-top: 20px;
+  color: var(--cl-login06-muted);
+  font-size: 14px;
+}
+
+.cl-login06__resend-btn {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 10px;
+  background: #e9f7df;
+  color: var(--cl-login06-deep);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cl-login06__resend-btn:hover:not(:disabled) {
+  background: var(--cl-login06-lime);
+}
+
+.cl-login06__resend-btn:disabled {
+  background: transparent;
+  color: #5b6862;
+  cursor: default;
+  font-variant-numeric: tabular-nums;
+}
+
+.cl-login06__alt {
+  margin: 8px 0 0;
+}
+
+.cl-login06__link {
+  color: var(--cl-login06-deep);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  border-radius: 4px;
+}
+
+.cl-login06__submit:focus-visible,
+.cl-login06__resend-btn:focus-visible,
+.cl-login06__link:focus-visible {
+  outline: 3px solid var(--cl-login06-deep);
+  outline-offset: 3px;
+}
+
+.cl-login06__done:focus {
+  outline: none;
+}
+
+.cl-login06__done:focus-visible {
+  outline: 3px solid var(--cl-login06-deep);
+  outline-offset: 6px;
+  border-radius: 16px;
+}
+
+.cl-login06__done-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 12px;
+  border: 2px solid var(--cl-login06-deep);
+  border-radius: 50%;
+  background: var(--cl-login06-lime);
+  color: var(--cl-login06-deep);
+}
+
+.cl-login06__demo {
+  margin: 22px 0 0;
+  padding-top: 16px;
+  border-top: 1px dashed var(--cl-login06-line);
+  color: #5b6862;
+  font-size: 12px;
+}
+
+@media (max-width: 400px) {
+  .cl-login06 {
+    box-shadow: 5px 5px 0 var(--cl-login06-deep);
+  }
+
+  .cl-login06__digit {
+    height: 54px;
+    border-radius: 12px;
+    font-size: 22px;
+  }
+
+  .cl-login06__dash {
+    width: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cl-login06 *,
+  .cl-login06 *::before,
+  .cl-login06 *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

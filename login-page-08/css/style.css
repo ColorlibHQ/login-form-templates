@@ -1,0 +1,573 @@
+/* login-page-08 - Colorlib
+ * Every style this snippet uses, and nothing else. No framework, no build step.
+ */
+
+/* Keeps a host page's framework base styles (Bootstrap's reboot) off this
+   snippet: every element starts from the browser default, then this sheet
+   styles it. On its own page it changes nothing. */
+:where(html) :is(html,body,div,span,p,a,h1,h2,h3,h4,h5,h6,label,input,select,option,optgroup,textarea,button,form,fieldset,legend,ul,ol,li,dl,dt,dd,figure,figcaption,section,article,header,footer,nav,main,aside,strong,b,em,i,small,sub,sup,blockquote,pre,code,picture,progress,output,summary,details,address,abbr,mark), :is(html, body) {
+  all: revert;
+}
+:where(html) input::-webkit-datetime-edit,
+:where(html) input::-webkit-datetime-edit-fields-wrapper,
+:where(html) input::-webkit-datetime-edit-text,
+:where(html) input::-webkit-datetime-edit-month-field,
+:where(html) input::-webkit-datetime-edit-day-field,
+:where(html) input::-webkit-datetime-edit-year-field {
+  all: revert;
+}
+/* Chrome maps the hidden attribute to display:none below author styles, so the
+   revert above would show every hidden element. Put it back at the weight of
+   one class: the snippet's own class rules can still override it, as they
+   could the browser default. */
+:where(html) [hidden]:where(:not([hidden="until-found" i])) {
+  display: none;
+}
+:where(html) :is(img, svg) {
+  vertical-align: revert;
+}
+:where(html) :is(img, table, thead, tbody, tfoot, tr, th, td, caption, hr, iframe, video) {
+  box-sizing: revert;
+}
+:where(html) img {
+  border-style: revert;
+}
+:where(html) table {
+  border-collapse: revert;
+  caption-side: revert;
+}
+:where(html) caption {
+  padding-top: revert;
+  padding-bottom: revert;
+  color: revert;
+  text-align: revert;
+}
+:where(html) th {
+  text-align: revert;
+}
+:where(html) :is(thead, tbody, tfoot, tr, td, th) {
+  border-color: revert;
+  border-style: revert;
+  border-width: revert;
+}
+:where(html) hr {
+  margin: revert;
+  color: revert;
+  background-color: revert;
+  border: revert;
+  opacity: revert;
+  height: revert;
+  overflow: revert;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/nunito-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/nunito-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/nunito-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/nunito-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../fonts/nunito-700-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../fonts/nunito-700-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../fonts/nunito-800-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../fonts/nunito-800-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(../fonts/nunito-900-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(../fonts/nunito-900-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.cl-icon {
+  height: 1em;
+  width: auto;
+  fill: currentColor;
+  display: inline-block;
+}
+
+body {
+  margin: 0;
+  background: #dff5e8;
+  font-family: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.cl-login08-demo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  place-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 40px 16px;
+  background: radial-gradient(circle at 8% 90%, #ffe38f 0 120px, transparent 121px),
+    radial-gradient(circle at 94% 8%, #c9d6ff 0 150px, transparent 151px),
+    #dff5e8;
+}
+
+.cl-login08 {
+  --cl-login08-ink: #2b1d16;
+  --cl-login08-muted: #5f4f47;
+  --cl-login08-tomato: #d63d1f;
+  --cl-login08-tomato-dark: #a82c12;
+  --cl-login08-leaf: #1f6d42;
+  --cl-login08-peach: #ffe7dc;
+  --cl-login08-error: #b3261e;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 100%;
+  max-width: 960px;
+  overflow: hidden;
+  border-radius: 36px;
+  background: #fff;
+  box-shadow: 0 30px 60px -30px rgba(47, 138, 87, .45);
+  color: var(--cl-login08-ink);
+  line-height: 1.5;
+}
+
+.cl-login08 *,
+.cl-login08 *::before,
+.cl-login08 *::after {
+  box-sizing: border-box;
+}
+
+.cl-login08 [hidden] {
+  display: none !important;
+}
+
+.cl-login08__vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cl-login08__art {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px 24px;
+  background: var(--cl-login08-peach);
+}
+
+.cl-login08__scene {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+}
+
+.cl-login08__eyes-shut {
+  opacity: 0;
+}
+
+.cl-login08.is-shy .cl-login08__eyes-open {
+  opacity: 0;
+}
+
+.cl-login08.is-shy .cl-login08__eyes-shut {
+  opacity: 1;
+}
+
+.cl-login08__scene g {
+  transition: opacity .15s ease;
+}
+
+.cl-login08__tag {
+  margin: 0;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--cl-login08-leaf);
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 6px 16px -8px rgba(229, 72, 42, .5);
+}
+
+.cl-login08__panel {
+  padding: clamp(28px, 5vw, 52px);
+}
+
+.cl-login08__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 22px;
+  color: var(--cl-login08-leaf);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.cl-login08__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50% 0;
+  background: #57c98a;
+  transform: rotate(-45deg);
+}
+
+.cl-login08__title {
+  margin: 0 0 6px;
+  font-size: clamp(28px, 3.4vw, 36px);
+  font-weight: 900;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+}
+
+.cl-login08__sub {
+  margin: 0 0 26px;
+  color: var(--cl-login08-muted);
+  font-size: 17px;
+}
+
+.cl-login08__field {
+  margin-bottom: 16px;
+}
+
+.cl-login08__label {
+  display: block;
+  margin: 0 0 6px 6px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.cl-login08__input {
+  display: block;
+  width: 100%;
+  min-height: 54px;
+  padding: 12px 20px;
+  border: 3px solid #eadfd8;
+  border-radius: 999px;
+  background: #fffaf7;
+  color: var(--cl-login08-ink);
+  font: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.cl-login08__input:hover {
+  border-color: #d9c8be;
+}
+
+.cl-login08__input:focus {
+  outline: none;
+  border-color: #6c8cff;
+  box-shadow: 0 0 0 5px rgba(108, 140, 255, .22);
+}
+
+.cl-login08__pw {
+  position: relative;
+}
+
+.cl-login08__pw .cl-login08__input {
+  padding-right: 60px;
+}
+
+.cl-login08__eye {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cl-login08-muted);
+  cursor: pointer;
+}
+
+.cl-login08__eye:hover {
+  background: #f5ebe5;
+  color: var(--cl-login08-ink);
+}
+
+.cl-login08__eye-off,
+.cl-login08__eye[aria-pressed="true"] .cl-login08__eye-on {
+  display: none;
+}
+
+.cl-login08__eye[aria-pressed="true"] .cl-login08__eye-off {
+  display: block;
+}
+
+.cl-login08__caps {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0 0 10px;
+  padding: 6px 14px;
+  border-radius: 12px;
+  background: #ffe38f;
+  color: #5a3d00;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.cl-login08__caps::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 18px;
+  border: 6px solid transparent;
+  border-top: 0;
+  border-bottom-color: #ffe38f;
+}
+
+.cl-login08__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 4px 6px 24px;
+}
+
+.cl-login08__check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cl-login08__check input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--cl-login08-leaf);
+}
+
+.cl-login08__link {
+  color: #3552d6;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.cl-login08__link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.cl-login08__submit {
+  width: 100%;
+  min-height: 58px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--cl-login08-tomato);
+  color: #fff;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 6px 0 var(--cl-login08-tomato-dark);
+  transition: transform .1s ease, box-shadow .1s ease;
+}
+
+.cl-login08__submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 var(--cl-login08-tomato-dark);
+}
+
+.cl-login08__submit:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--cl-login08-tomato-dark);
+}
+
+.cl-login08__foot {
+  margin: 24px 0 0;
+  color: var(--cl-login08-muted);
+  font-size: 16px;
+  text-align: center;
+}
+
+.cl-login08__demo {
+  margin: 10px 0 0;
+  color: #6d5d55;
+  font-size: 13px;
+  text-align: center;
+}
+
+.cl-login08__eye:focus-visible,
+.cl-login08__check input:focus-visible,
+.cl-login08__link:focus-visible,
+.cl-login08__submit:focus-visible,
+.cl-login08__ghost:focus-visible {
+  outline: 3px solid #6c8cff;
+  outline-offset: 3px;
+}
+
+.cl-login08__error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0 0 10px;
+  color: var(--cl-login08-error);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cl-login08__error::before {
+  content: "\2639";
+  font-size: 18px;
+  line-height: 1;
+}
+
+.cl-login08__error:empty {
+  display: none;
+}
+
+.cl-login08__field.is-error .cl-login08__input {
+  border-color: #f08a7a;
+  background: #fff4f2;
+}
+
+.cl-login08__done {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.cl-login08__done:focus {
+  outline: none;
+}
+
+.cl-login08__done:focus-visible {
+  outline: 3px solid #6c8cff;
+  outline-offset: 6px;
+  border-radius: 20px;
+}
+
+.cl-login08__done-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: #dff5e8;
+}
+
+.cl-login08__ghost {
+  min-height: 50px;
+  padding: 0 24px;
+  border: 3px solid #eadfd8;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--cl-login08-ink);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+@media (max-width: 780px) {
+  .cl-login08 {
+    grid-template-columns: minmax(0, 1fr);
+    border-radius: 28px;
+  }
+
+  .cl-login08__art {
+    padding: 20px 16px 16px;
+  }
+
+  .cl-login08__scene {
+    max-width: 200px;
+  }
+
+  .cl-login08__tag {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cl-login08 *,
+  .cl-login08 *::before,
+  .cl-login08 *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

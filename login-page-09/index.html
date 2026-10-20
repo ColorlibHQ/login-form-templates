@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Page V09 | Colorlib</title>
+  
+  	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="cl-login09">
+    <header class="cl-login09__bar">
+      <a class="cl-login09__brand" href="#" aria-label="Corely admin console home">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect x="2" y="2" width="9" height="9" fill="#1d3a8a"/><rect x="13" y="2" width="9" height="9" fill="#3b64d8"/><rect x="2" y="13" width="9" height="9" fill="#3b64d8"/><rect x="13" y="13" width="9" height="9" fill="#9db4f2"/></svg>
+        <span>Corely <span class="cl-login09__brand-sub">Admin Console</span></span>
+      </a>
+      <a class="cl-login09__status" href="#">
+        <span class="cl-login09__status-dot" aria-hidden="true"></span>
+        All systems operational
+        <span class="cl-login09__vh">(opens status page)</span>
+      </a>
+    </header>
+
+    <main class="cl-login09__main">
+      <section class="cl-login09__card" aria-labelledby="cl-login09-title">
+        <div data-view>
+          <h1 class="cl-login09__title" id="cl-login09-title">Sign in to your workspace</h1>
+          <p class="cl-login09__sub">Administrators and operators only.</p>
+
+          <form class="cl-login09__form" data-form novalidate>
+            <div class="cl-login09__field" data-field>
+              <label class="cl-login09__label" for="cl-login09-ws">Workspace URL</label>
+              <div class="cl-login09__url">
+                <span class="cl-login09__affix" aria-hidden="true">https://</span>
+                <input class="cl-login09__input" id="cl-login09-ws" name="workspace" type="text" autocomplete="organization" autocapitalize="off" spellcheck="false" required pattern="[a-z0-9]([a-z0-9\-]{0,30}[a-z0-9])?" placeholder="your-company" data-msg="Enter your workspace name." data-pattern="Use lowercase letters, numbers and hyphens, like acme-eu." aria-describedby="cl-login09-ws-hint cl-login09-ws-err">
+                <span class="cl-login09__affix" aria-hidden="true">.corely.io</span>
+              </div>
+              <p class="cl-login09__hint" id="cl-login09-ws-hint" data-ws-hint>The part before .corely.io in your admin address.</p>
+              <p class="cl-login09__error" id="cl-login09-ws-err" data-error></p>
+            </div>
+
+            <div class="cl-login09__field" data-field>
+              <label class="cl-login09__label" for="cl-login09-email">Work email</label>
+              <input class="cl-login09__input" id="cl-login09-email" name="email" type="email" autocomplete="username" required data-msg="Enter your work email." aria-describedby="cl-login09-email-err">
+              <p class="cl-login09__error" id="cl-login09-email-err" data-error></p>
+            </div>
+
+            <div class="cl-login09__field" data-field>
+              <div class="cl-login09__row">
+                <label class="cl-login09__label" for="cl-login09-pw">Password</label>
+                <a class="cl-login09__link" href="#">Forgot password?</a>
+              </div>
+              <div class="cl-login09__pw">
+                <input class="cl-login09__input" id="cl-login09-pw" name="password" type="password" autocomplete="current-password" required minlength="12" data-msg="Enter your password." aria-describedby="cl-login09-pw-err">
+                <button class="cl-login09__eye" type="button" aria-pressed="false" aria-controls="cl-login09-pw" data-pw-toggle>Show<span class="cl-login09__vh"> password</span></button>
+              </div>
+              <p class="cl-login09__error" id="cl-login09-pw-err" data-error></p>
+            </div>
+
+            <div class="cl-login09__split">
+              <label class="cl-login09__check"><input type="checkbox" name="remember"><span>Keep me signed in for 30 days</span></label>
+              <div class="cl-login09__region">
+                <label class="cl-login09__label cl-login09__label--inline" for="cl-login09-region">Region</label>
+                <select class="cl-login09__select" id="cl-login09-region" name="region">
+                  <option>EU (Frankfurt)</option>
+                  <option>UK (London)</option>
+                  <option>US East (Virginia)</option>
+                  <option>APAC (Singapore)</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="cl-login09__submit" type="submit">Sign in</button>
+            <button class="cl-login09__secondary" type="button" data-sso>Sign in with company SSO</button>
+          </form>
+        </div>
+
+        <div class="cl-login09__done" data-success tabindex="-1" hidden>
+          <p class="cl-login09__done-kicker">Authenticated</p>
+          <h2 class="cl-login09__title" data-done-title>Welcome back</h2>
+          <dl class="cl-login09__session">
+            <div><dt>Workspace</dt><dd data-s-ws></dd></div>
+            <div><dt>Account</dt><dd data-s-email></dd></div>
+            <div><dt>Region</dt><dd data-s-region></dd></div>
+            <div><dt>Session</dt><dd data-s-session></dd></div>
+          </dl>
+          <button class="cl-login09__secondary" type="button" data-reset>Sign out</button>
+        </div>
+
+        <div class="cl-login09__live" role="status" aria-live="polite" data-live></div>
+      </section>
+
+      <p class="cl-login09__notice">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6Z"/></svg>
+        Authorised use only. Sign-ins are logged with IP address and device.
+      </p>
+    </main>
+
+    <footer class="cl-login09__foot">
+      <span>&copy; 2026 Corely Systems Ltd &middot; Console v4.18.2</span>
+      <span><a class="cl-login09__link" href="#">Security</a> <a class="cl-login09__link" href="#">Privacy</a> <a class="cl-login09__link" href="#">Support</a></span>
+      <span>Demo &mdash; nothing is sent.</span>
+    </footer>
+  </div>
+	<script src="js/snippet.js"></script>
+</body>
+</html>
